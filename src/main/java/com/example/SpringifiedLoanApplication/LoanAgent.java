@@ -2,7 +2,7 @@ package com.example.SpringifiedLoanApplication;
 
 public class LoanAgent {
     ICreditAgency agency;
-    int minimumCreditScore;
+    int minimumCreditScore = 720;
 
     IErrorLog errorLog;
 
