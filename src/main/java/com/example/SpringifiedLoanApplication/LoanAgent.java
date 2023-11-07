@@ -2,14 +2,16 @@ package com.example.SpringifiedLoanApplication;
 
 public class LoanAgent {
     ICreditAgency agency;
-    int minimumCreditScore;
+    int minimumCreditScore = 300;
 
     IErrorLog errorLog;
 
     public boolean processLoanApplication(ILoanApplication application) throws InvalidCreditScoreException {
         boolean response = false;
         String ssn = application.getSSN();
+        System.out.println(ssn);
         int creditScore = agency.getCreditScore(ssn);
+        System.out.println(creditScore);
         if(creditScore < 200 || creditScore > 850) {
             errorLog.log(creditScore + " is not a valid credit score");
             throw new InvalidCreditScoreException(creditScore + " is not a valid credit score");
