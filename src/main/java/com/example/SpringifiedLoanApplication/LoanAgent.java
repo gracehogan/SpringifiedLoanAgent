@@ -1,5 +1,9 @@
 package com.example.SpringifiedLoanApplication;
 
+import org.springframework.stereotype.Component;
+
+
+@Component
 public class LoanAgent {
     ICreditAgency agency;
     int minimumCreditScore = 720;

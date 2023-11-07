@@ -1,6 +1,9 @@
 package com.example.SpringifiedLoanApplication;
 
-public class TRWCreditAgency {
+import org.springframework.stereotype.Component;
+
+@Component
+public class CreditAgency {
     public int getCreditScore(String ssn) {
         return 0;
     }
