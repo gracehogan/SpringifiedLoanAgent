@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.springframework.beans.factory.annotation.Value;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +15,6 @@ public class LoanAgentTests {
     LoanAgent uut;
     TestingLoanApplicationStub loanApplication;
     CreditAgencyTestingStub agency;
-
     IErrorLog errorLog;
 
     @BeforeEach

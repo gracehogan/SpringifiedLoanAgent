@@ -14,7 +14,7 @@ import static org.mockito.Mockito.mock;
 public class ParameterizedLoanAgentTests {
     LoanAgent uut;
     ILoanApplication loanApplication;
-    ICreditAgency agency;
+    CreditAgencyTestingStub agency;
     IErrorLog errorLog;
 
     @BeforeEach
@@ -23,6 +23,7 @@ public class ParameterizedLoanAgentTests {
         loanApplication = () -> {return "123-45-6789";};
         uut.setMinimumCreditScore(720);
         errorLog = mock(IErrorLog.class);
+        agency = new CreditAgencyTestingStub();
         uut.setErrorLog(errorLog);
     }
 
@@ -36,7 +37,7 @@ public class ParameterizedLoanAgentTests {
     @CsvSource({"200, false", "719, false", "720, true", "721, true", "850, true"})
     public void testWithValidCreditScores(int creditScore, boolean expectedResult) {
         boolean actualResult;
-        agency = (ssn) -> {return creditScore;};
+        agency.setCreditScore(creditScore);
         uut.setAgency(agency);
 
         try {
@@ -50,7 +51,7 @@ public class ParameterizedLoanAgentTests {
     @ParameterizedTest
     @CsvSource({"199", "851"})
     public void testWithInvalidCreditScores(int creditScore) {
-        agency = (ssn) -> {return creditScore;};
+        agency.setCreditScore(creditScore);
         uut.setAgency(agency);
 
         assertAll("Exception assertions",

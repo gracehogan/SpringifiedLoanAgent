@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan (basePackages = "com.example.SpringifiedLoanApplication")
 public class SpringifiedLoanApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidCreditScoreException {
 		ApplicationContext context = SpringApplication.run(SpringifiedLoanApplication.class, args);
 
 		ICreditAgency creditAgency = context.getBean("creditAgency", ICreditAgency.class);
@@ -23,7 +23,14 @@ public class SpringifiedLoanApplication {
 		creditAgency.getCreditScore("999-99-9999");
 		creditAgency.getCreditScore("555-55-5555");
 		creditAgency.getCreditScore("222-22-2222");
-		creditAgency.getCreditScore("327-73-3232");
+		creditAgency.getCreditScore("dummy ssn");
+
+		LoanAgent loanAgent = context.getBean("loanAgent", LoanAgent.class);
+		ILoanApplication loanApplication = context.getBean("loanApplication", ILoanApplication.class);
+
+		loanAgent.processLoanApplication(loanApplication);
+
+
 	}
 
 	/*

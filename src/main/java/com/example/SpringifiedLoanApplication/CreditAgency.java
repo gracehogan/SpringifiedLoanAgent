@@ -11,6 +11,8 @@ public class CreditAgency implements ICreditAgency {
 
     @Value("${companyName}")
     String name;
+
+    //Find way to add to loanAgent
     HashMap<String, Integer> creditScores = new HashMap<>();
     public int getCreditScore(String ssn) {
         creditScores.put("111-11-1111", 719);
@@ -25,7 +27,10 @@ public class CreditAgency implements ICreditAgency {
         else return 720;
     }
 
+    @Override
     public String getName() {
         return name;
     }
+
+
 }
