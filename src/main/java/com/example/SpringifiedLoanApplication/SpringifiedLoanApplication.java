@@ -2,14 +2,28 @@ package com.example.SpringifiedLoanApplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@ComponentScan
+@PropertySource("application.properties")
+@ComponentScan (basePackages = "com.example.SpringifiedLoanApplication")
 public class SpringifiedLoanApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringifiedLoanApplication.class, args);
+		ApplicationContext context = SpringApplication.run(SpringifiedLoanApplication.class, args);
+
+		ICreditAgency creditAgency = context.getBean("creditAgency", ICreditAgency.class);
+
+		creditAgency.getCreditScore("111-11-1111");
+		creditAgency.getCreditScore("333-33-3333");
+		creditAgency.getCreditScore("444-44-4444");
+		creditAgency.getCreditScore("999-99-9999");
+		creditAgency.getCreditScore("555-55-5555");
+		creditAgency.getCreditScore("222-22-2222");
+		creditAgency.getCreditScore("327-73-3232");
 	}
 
 	/*

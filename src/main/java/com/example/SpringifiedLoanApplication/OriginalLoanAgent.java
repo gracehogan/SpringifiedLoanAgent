@@ -1,5 +1,7 @@
 package com.example.SpringifiedLoanApplication;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class OriginalLoanAgent {
     ICreditAgency agency;
     public boolean processLoanApplication(LoanApplication application) throws InvalidCreditScoreException {
@@ -14,6 +16,7 @@ public class OriginalLoanAgent {
         }
         return response;
     }
+
     public void setAgency(ICreditAgency agency) {
         this.agency = agency;
     }
