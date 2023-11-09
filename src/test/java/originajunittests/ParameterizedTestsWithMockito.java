@@ -22,6 +22,7 @@ public class ParameterizedTestsWithMockito {
         mockLoanApplication = mock(ILoanApplication.class);
         when(mockLoanApplication.getSSN()).thenReturn("123-45-6789");
         mockAgency = mock(ICreditAgency.class);
+        when(mockAgency.getName()).thenReturn("TRW");
         uut.setMinimumCreditScore(720);
         mockErrorLog = mock(IErrorLog.class);
         uut.setErrorLog(mockErrorLog);

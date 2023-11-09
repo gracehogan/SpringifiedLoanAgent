@@ -15,7 +15,7 @@ public class CreditAgencyTestingStub implements ICreditAgency {
 
     @Override
     public String getName() {
-        return name;
+        return "TRW";
     }
 
 
